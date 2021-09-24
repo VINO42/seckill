@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.vino42.seckill.domain.mapper.ActivityInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="io.github.vino42.seckill.domain.entity.ActivityInfoEntity">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="channel" property="channel"/>
+        <result column="target" property="target"/>
+        <result column="front_url" property="frontUrl"/>
+        <result column="template" property="template"/>
+        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="activity_good_id" property="activityGoodId"/>
+        <result column="sec_kill_remain_time" property="secKillRemainTime"/>
+        <result column="buy_times" property="buyTimes"/>
+        <result column="limit_count" property="limitCount"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="creator_id" property="creatorId"/>
+        <result column="creator_name" property="creatorName"/>
+        <result column="updator_id" property="updatorId"/>
+        <result column="updator_name" property="updatorName"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, channel, target, front_url, template, start_time, end_time, activity_good_id, sec_kill_remain_time, buy_times, limit_count, create_time, update_time, creator_id, creator_name, updator_id, updator_name
+    </sql>
+    <select id="getActivitytByGoodIdAndActivityId"
+            resultType="io.github.vino42.seckill.domain.entity.ActivityInfoEntity">
+                select  * from activity_info where activity_good_id=#{goodsId} and id=#{activityId} limit 1;
+    </select>
+
+</mapper>

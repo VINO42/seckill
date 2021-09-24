@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+io.github.vino42.seckill.support.redis.RedissionConfiguration,\
+io.github.vino42.seckill.support.redis.RedisTemplateConfig
