@@ -106,12 +106,10 @@ public class SecKillController {
             return WrapMapper.pleaseLogin();
         }
         ActivityInfoEntity activity = activityInfoService.getActivitytByGoodIdAndActivityId(goodsId, activityId);
-        if ((LocalDateTimeUtil.now().isBefore(activity.getStartTime()))
-        ) {
+        if ((LocalDateTimeUtil.now().isBefore(activity.getStartTime()))) {
             return WrapMapper.error(ACTIVITY_NOT_BEGIN);
         }
         if ((LocalDateTimeUtil.now().isAfter(activity.getEndTime()))) {
-
             return WrapMapper.error(ACTIVITY_ALREADY_END);
         }
         if (!secKillService.checkCapCha(user, capcha, timstamp)) {
