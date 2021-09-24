@@ -35,9 +35,9 @@ public class SecKillController {
     /**
      * 添加活动商品到redis TODO:完善库表
      *
-     * @param activityId       活动id
-     * @param skuId            商品id
-     * @param amount 库存数
+     * @param activityId 活动id
+     * @param skuId      商品id
+     * @param amount     库存数
      * @return
      */
     @GetMapping("/skuadd")
@@ -76,8 +76,8 @@ public class SecKillController {
                                           @RequestParam("perActLim") int perActLim,
                                           @RequestParam("activityId") Long activityId) {
         //判断是否登录
-        if (null == user) {
-            return WrapMapper.illegalArgument();
+        if (user == null || user.getPhone() == null || user.getId() == null) {
+            return WrapMapper.pleaseLogin();
         }
 
         if (!secKillService.checkPath(path, user, goodsId)) {
@@ -102,8 +102,8 @@ public class SecKillController {
                                                      @RequestParam(value = "capcha", defaultValue = "42", required = false) String capcha,
                                                      @RequestParam("timstamp") long timstamp) {
         //判断是否登录
-        if (user == null) {
-            return WrapMapper.error(AUTH_401_TOKEN_INVALID);
+        if (user == null || user.getPhone() == null || user.getId() == null) {
+            return WrapMapper.pleaseLogin();
         }
         ActivityInfoEntity activity = activityInfoService.getActivitytByGoodIdAndActivityId(goodsId, activityId);
         if ((LocalDateTimeUtil.now().isBefore(activity.getStartTime()))
