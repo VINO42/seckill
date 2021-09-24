@@ -27,7 +27,7 @@ import java.util.List;
  * =====================================================================================
  */
 @RestController
-@RequestMapping("/userInfoEntity")
+@RequestMapping("/userInfo")
 public class UserInfoController {
 
     @Autowired

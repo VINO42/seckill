@@ -27,7 +27,7 @@ import java.util.List;
  * =====================================================================================
  */
 @RestController
-@RequestMapping("/seckillRecordEntity")
+@RequestMapping("/seckillRecord")
 public class SeckillRecordController {
 
     @Autowired

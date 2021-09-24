@@ -28,7 +28,7 @@ import java.util.List;
  * =====================================================================================
  */
 @RestController
-@RequestMapping("/activityGoodEntity")
+@RequestMapping("/activityGood")
 public class ActivityGoodController {
 
     @Autowired
