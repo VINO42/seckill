@@ -37,24 +37,24 @@ public class SecKillController {
      *
      * @param activityId       活动id
      * @param skuId            商品id
-     * @param perSkuLimitCount 当前商品针对单个用户的购买数量限制
+     * @param amount 库存数
      * @return
      */
     @GetMapping("/skuadd")
     @ResponseBody
     public Object skuAdd(@RequestParam(value = "activityId", defaultValue = "") String activityId,
                          @RequestParam(value = "skuId", defaultValue = "") String skuId,
-                         @RequestParam(value = "skuLimit", defaultValue = "0") int perSkuLimitCount) {
+                         @RequestParam(value = "skuLimit", defaultValue = "0") int amount) {
         if (StringUtils.isBlank(activityId)) {
             return WrapMapper.illegalArgument("活动id不能为空");
         }
         if (StringUtils.isBlank(skuId)) {
             return WrapMapper.illegalArgument("商品id不能为空");
         }
-        if (perSkuLimitCount <= 0) {
+        if (amount <= 0) {
             return WrapMapper.illegalArgument("sku库存必須大于0");
         }
-        return WrapMapper.ok(secKillService.addSkuToRedis(activityId, skuId, perSkuLimitCount));
+        return WrapMapper.ok(secKillService.addSkuToRedis(activityId, skuId, amount));
     }
 
     /**

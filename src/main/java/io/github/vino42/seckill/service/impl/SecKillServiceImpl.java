@@ -122,9 +122,9 @@ public class SecKillServiceImpl implements SecKillService {
     }
 
     @Override
-    public Boolean addSkuToRedis(String activityId, String skuId, int perSkuLimitCount) {
+    public Boolean addSkuToRedis(String activityId, String skuId, int amount) {
         String nameAmount = "sec_" + activityId + "_sku_amount_hash";
-        redisTemplate.opsForHash().put(nameAmount, skuId, perSkuLimitCount);
+        redisTemplate.opsForHash().put(nameAmount, skuId, amount);
         return true;
     }
 
